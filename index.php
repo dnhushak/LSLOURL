@@ -2,9 +2,14 @@
 //Include the configure file
 include('config.php');
 
-
-
 //Building variables for the hit counter data
+
+//Refering site
+$referer = $_SERVER['HTTP_REFERER'];
+
+//User's IP address
+$usersip = $_SERVER['REMOTE_ADDR'];
+
 //If browser and OS tracking is turned on
 if($browswertrack){
 	$browserinfo = get_browser($HTTP_USER_AGENT,true);
@@ -22,10 +27,30 @@ else{
 //If IP location lookup is turned on
 if($iptolocation){
 	include('ip2locationlite.class.php');
+	//Load the class
+	$ipLite = new ip2location_lite;
+	$ipLite->setKey($apikey);
+	$locations = $ipLite->getCity($usersip);
+
+	if (!empty($locations) && is_array($locations)) { 
+		$country = $locations['countryName'];
+		$region = $locations['regionName'];
+		$city = $locations['cityName'];
+		$zip = $locations['zipCode'];
+		$lat = $locations['latitude'];
+		$lon = $locations['longitude'];	
+	}
+}
+else{
+	$country = null;
+	$region = null;
+	$city = null;
+	$zip = null;
+	$lat = null;
+	$lon = null;
 }
 
-$referer = $_SERVER['HTTP_REFERER'];
-$usersip = $_SERVER['REMOTE_ADDR'];
+
 
 //Check if a url slug is given
 if(isset($_GET['l'])){
@@ -52,7 +77,7 @@ if(isset($_GET['l'])){
 	}
 	
 	//Log the hit
-	addHit($link_id, $referer, $usersip, $browser, $version, $operats, $db);
+	addHit($link_id, $referer, $usersip, $browser, $version, $operats, $contry, $region, $city, $zip, $lat, $lon, $db);	
 	
 	//clean up connections
 	$result->free();
@@ -66,11 +91,11 @@ if(isset($_GET['l'])){
 
 
 
-function addHit($link_id, $referer, $usersip, $browser, $version, $operats, $db){
+function addHit($link_id, $referer, $usersip, $browser, $version, $operats, $contry, $region, $city, $zip, $lat, $lon, $db){
 
-	//Create the SQL INSERT INTO query to log a hit
-	$sql = "INSERT INTO hits (link_id, refer, user_ip, browser, browser_version, os)
-	VALUES ('" . $link_id . "', '" . $referer . "', '" . $usersip . "', '" . $browser . "', '" . $version . "', '" . $operats . "')";
+	//Create the SQL 'INSERT INTO' query to log a hit
+	$sql = "INSERT INTO hits (link_id, refer, user_ip, browser, browser_version, os, country, region, city, zipcode, lat, lon)
+	VALUES ('" . $link_id . "', '" . $referer . "', '" . $usersip . "', '" . $browser . "', '" . $version . "', '" . $operats . "', '" . $country . "', '" . $region  . "', '" . $city . "', '" . $zip . "', '" . $lat . "', '" . $lon ."')";
 	
 	//Log the hit and check for successful query
 	if(!$result = $db->query($sql)){
