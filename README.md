@@ -100,6 +100,9 @@ Finally, if you manage to sort through all of the server-side setup, you just si
 	$browsertrack = FALSE;
 ```
 
+###Rename File
+After you've decided and input all of your configurations, change the name of ```config_template.php``` to ```config.php```.
+
 ---
 
 Congratulations, you've now set up Short URL! Add some associations in the ```links``` database (```short``` is the name of the slug you want, and ```long``` is the url you want that slug to point to), and you're off to the races!

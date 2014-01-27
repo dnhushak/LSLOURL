@@ -2,7 +2,6 @@
 //Include the configure file
 include('config.php');
 
-
 //Building variables for the hit counter data
 
 //Refering site
