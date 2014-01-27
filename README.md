@@ -1,6 +1,6 @@
-#Short Link
+#Short URL
 
-Short link is a short url geneartor with stats tracking.
+Short URL is a short url geneartor with stats tracking.
 
 It associates a short, easy to remember url, called a _slug_, with a longer, more error prone, and often uglier url.
 
@@ -19,8 +19,6 @@ This version uses a MySQL database to manage both the url forwarding association
 
 ##Setup
 
-//Set these variables to turn on (TRUE) or off (FALSE) certain features
-//When finished, rename this file to config.php
+To start, you will need some sort of access to a domain name and web hosting, be it your own webserver or through a registrar's web hosting service.
 
-	//Go to http://ipinfodb.com/ to create an account and get your own api key
-	//Your api key will be a long string of numbers and letters, replace 'yourapikey' below with this string
+In addition to just the http web space, you will also need access to a MySQL database, where all of the link associations and analytics will be stored.
