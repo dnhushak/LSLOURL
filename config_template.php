@@ -1,17 +1,9 @@
 <?php
-//IP location lookup (country, region, city, zipcode etc.)	
-	$apikey = yourapikey;
-	$iptolocation = FALSE;
-
-
-//Browser and OS information tracking
-	$browsertrack = FALSE;
-	
 //Default page for null or invalid slugs
 	$homepage = 'http://www.example.com';
 
 //Fill in your specific database variables here
-	$database='dbase';
+	$database='shorturl';
 	$username='user';
 	$password='pass';
 	$hostname='host url or ip';
@@ -19,4 +11,12 @@
 	if($db->connect_errno > 0){
 		die('Unable to connect to database [' . $db->connect_error . ']');
 	}
+	
+//IP location lookup (country, region, city, zipcode etc.)	
+	$apikey = 'yourapikey';
+	$iptolocation = FALSE;
+
+
+//Browser and OS information tracking
+	$browsertrack = FALSE;
 ?>

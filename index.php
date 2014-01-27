@@ -2,6 +2,7 @@
 //Include the configure file
 include('config.php');
 
+
 //Building variables for the hit counter data
 
 //Refering site
@@ -29,10 +30,13 @@ if($iptolocation){
 	include('ip2locationlite.class.php');
 	//Load the class
 	$ipLite = new ip2location_lite;
+	//Apply the API key
 	$ipLite->setKey($apikey);
+	
+	//Look up IP info
 	$locations = $ipLite->getCity($usersip);
-
 	if (!empty($locations) && is_array($locations)) { 
+		//If IP info is valid, parse out the various fields we want
 		$country = $locations['countryName'];
 		$region = $locations['regionName'];
 		$city = $locations['cityName'];
