@@ -77,7 +77,7 @@ This setting provides specifics regarding the computer and browser that a client
 
 Some server settings need to be edited to get this to work, and it can sometimes be a little tricky.
 
-For starters, you need the latest copy of ```php_browscap.ini```, which you can download [here](http://tempdownloads.browserscap.com/). Be sure to grab the one that says _"Use only for PHP!"_.
+For starters, you need the latest copy of ```php_browscap.ini```, which you can download [here](https://browscap.org). Be sure to grab the one that says _"Use only for PHP!"_.
 
 Load that ini file somewhere on your server. It doesn't matter specifically where, but make a note of it.
 
