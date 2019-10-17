@@ -1,4 +1,4 @@
-#Short URL
+# Short URL
 
 Short URL is a short url geneartor with stats tracking.
 
@@ -17,25 +17,25 @@ Short link uses the features of .htaccess to force every requested url to redire
 
 This version uses a MySQL database to manage both the url forwarding associations and the hit counter and logging information.
 
-##Setup
+## Setup
 
 To start, you will need some sort of access to a domain name and web hosting, be it your own webserver or through a registrar's web hosting service.
 
 In addition to just the http web space, you will also need access to a MySQL database, where all of the link associations and analytics will be stored.
 
-###Database setup
+### Database setup
 
 At this point there is an assumption about the user's knowledge set, and that at a very basic level the user understands database management and can run an SQL query on their database.
 
 To initialize the database, run the SQL query in ```shorturl.sql``` on your server. This initializes two tables: the link association table, and the hit counter and analytics table
 
-###Configuration
+### Configuration
 
 In your favorite php IDE or text editor, open up the ```config_template.php``` file. There are several variables that drive Short URL that rely on information specific to your server, hostname, and other setup particulars.
 
 There are also some simple featureset on/off selections that you can turn on with a ```TRUE``` or ```FALSE``` assignment.
 
-###Default Homepage
+### Default Homepage
 
 Whenever a client sends an http request to the domain either without a slug, or with a slug that has not yet been generated, Short URL will redirect it to this home page. Change ```example.com``` to whatever page you wish in the following line in the config_template file:
 ```php
@@ -45,7 +45,7 @@ Whenever a client sends an http request to the domain either without a slug, or 
 
 Note that you can redirect this to a 404 handling page if you desire.
 
-###Database Connection
+### Database Connection
 
 Next, we need to be able to connect to our database with our php files. This is done using mysqli() functions in php. You will need the database host name or IP address, and a username/password combination with read/write priveliges to said database. May hosting providers have _mostly_ easy to use web interfaces for acquiring and adminstering this information.
 
@@ -59,7 +59,7 @@ Once you have those necessary pieces of information, replace ```user```, ```pass
 	$hostname='host url or ip';
 ```
 
-###IP Geographic Lookup
+### IP Geographic Lookup
 
 This setting allows you to store location data about the user's IP address. You will need an API key for ipinfodb. Click [here](http://ipinfodb.com/login.php) and sign up for an account. It's free, and there are no newsletters, hooray! Once you've signed up you will be provided with a long API key, which will be a string of numbers and letters.
 
@@ -71,7 +71,7 @@ Now that you have an API key, replace ```yourapikey``` with the long string of l
 	$iptolocation = FALSE;
 ```
 
-###Browser and OS information tracking
+### Browser and OS information tracking
 
 This setting provides specifics regarding the computer and browser that a client is using when accessing a Short Link.
 
@@ -100,7 +100,7 @@ Finally, if you manage to sort through all of the server-side setup, you just si
 	$browsertrack = FALSE;
 ```
 
-###Rename File
+### Rename File
 After you've decided and input all of your configurations, change the name of ```config_template.php``` to ```config.php```.
 
 ---
